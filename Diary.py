@@ -1,4 +1,11 @@
 #Create-Deve
+def create_file():
+    try:
+        file = open("diary.txt", "x")
+        print("\nFile 'diary.txt' created successfully!!!")
+        file.close()
+    except FileExistsError:
+        print("\nFile 'diary.txt' already exists!")
 
 #Append-Jackie
 def append_entry():
@@ -72,4 +79,30 @@ def delete_entry():
     except Exception as e:
         print("Error:", e)
 
-#Main Menu-Devw
+#Main Menu-Deve
+while True:
+    print("\n==== PERSONAL DIARY MENU ====")
+    print("1. Add Entry")
+    print("2. Read Entries")
+    print("3. Update Entry")
+    print("4. Search Entry")
+    print("5. Delete Entry")
+    print("6. Exit")
+
+    choice = input("Enter choice: ")
+
+    if choice == "1":
+        append_entry()
+    elif choice == "2":
+        read_entries()
+    elif choice == "3":
+        update_entry()
+    elif choice == "4":
+        search_entry()
+    elif choice == "5":
+        delete_entry()
+    elif choice == "6":
+        print("Exiting program...")
+        break
+    else:
+        print("Invalid choice, please choose again.")
