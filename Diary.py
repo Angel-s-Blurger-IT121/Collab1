@@ -124,6 +124,8 @@ def delete_entry():
         print("Error:", e)
 
 #Main Menu-Deve
+create_file()
+
 while True:
     print("\n==== PERSONAL DIARY MENU ====")
     print("1. Add Entry")
