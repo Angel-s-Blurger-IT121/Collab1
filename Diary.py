@@ -23,8 +23,52 @@ def append_entry():
         print("Error:", e)
 
 #Read-Sam
+def read_entries():
+    try:
+        file = open("Diary.txt", "r")
+        lines = file.readlines()
+
+        print("\n--- Diary Entries ---")
+        for line in lines:
+            print(line.strip())
+
+        print(f"\nTotal entries: {len(lines)}")
+        file.close()
+
+    except FileNotFoundError:
+        print("Diary entry not found.")
+    except Exception as e:
+        print("Error:", e)
 
 #Update-Sam
+def update_entry():
+    try:
+        date_to_update = input("Enter date to update: ")
+        file = open("Diary.txt", "r")
+        lines = file.readlines()
+        file.close()
+        file = open("Diary.txt", "w")
+
+        found = False
+        for line in lines:
+            if date_to_update in line:
+                new_entry = input("Enter new entry: ")
+                file.write(f"[{date_to_update}] {new_entry}\n")
+                found = True
+            else:
+                file.write(line)
+
+        file.close()
+
+        if found:
+            print("Entry updated!")
+        else:
+            print("Date not found.")
+
+    except FileNotFoundError:
+        print("Diary entry not found.")
+    except Exception as e:
+        print("Error:", e)
 
 #Search-Jackie
 def search_entry():
